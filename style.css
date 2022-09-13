@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.titleCenter{
+    text-align: center;
+}
+
+.container{
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 0;
+}
+
+.graphContainer{
+    margin: 0 auto;
+}
