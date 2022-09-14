@@ -1,24 +1,21 @@
 # naves_de_star_wars
 Criação de um mini-sistema web que gera dashboards apartir de uma api publica com o tema de Guerra nas Estrelas.
-## Project setup
+## Inicialização
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Copilar e hot-reloads para o desenvolvimento
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Copilar para produção
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Arquivos ajustados no projeto
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
