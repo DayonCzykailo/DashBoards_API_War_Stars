@@ -1,51 +1,27 @@
 
-async function fetchData() {
-   const url = `https://swapi.dev/api/starships/?format=json`;
 
-   const response = await fetch(url);
-   const datapoints = await response.json();
-   //console.log(datapoints);
-   return datapoints;
-}
-var fetchedData = fetchData()
 
-var nomes = fetchedData.then(datapoints => {
-   const name = datapoints.results.map(
-      function (index) {
-         return index.name;
-      }
-   )
-   console.log(name);
-});
 
-var comprimento = fetchedData.then(datapoints => {
-   const length = datapoints.results.map(
-      function (index) {
-         return index.length;
-      }
-   )
 
-   console.log(length);
-});
-
-var lengthNumber = comprimento.map(value => isNaN(value) ? 0 : value);
+//var lengthNumber = comprimento.map(value => isNaN(value) ? 0 : value);
 
 
 const data = {
-   labels: nomes,
+   labels: ['item'],
    datasets: [{
       label: 'label',
-      data: lengthNumber,
+      data: [1],
       backgroundColor: [
          'rgba(110, 165, 200, 1)',
-         'rgba(111, 242, 97, 1)',
-         'rgba(242, 122, 82, 1)'
+         //'rgba(111, 242, 97, 1)',
+         //'rgba(242, 122, 82, 1)'
       ]
    }]
 }
 
 const grafico1 = document.getElementById('grafico1').getContext('2d');
 const chart1 = new Chart(grafico1, {
+   //type: 'pie',
    type: 'bar',
    data,
 });
@@ -112,3 +88,38 @@ const chart4 = new Chart(grafico4, {
 
 
 */
+
+async function fetchData() {
+   const url = `https://swapi.dev/api/starships/?format=json`;
+
+   const response = await fetch(url);
+   const datapoints = await response.json();
+   //console.log(datapoints);
+   return datapoints;
+}
+var fetchedData = fetchData()
+
+function atualizaGraficos() {
+   fetchedData.then(datapoints => {
+      const name = datapoints.results.map(
+         function (index) {
+            return index.name;
+         }
+      )
+      console.log(name);
+
+      const hyperdrive_rating = datapoints.results.map(
+         function (index) {
+            return index.hyperdrive_rating;
+         }
+      )
+      console.log(hyperdrive_rating.map(Number).map(value => isNaN(value) ? 0 : value));
+
+
+      chart1.data.labels = name;
+      chart1.data.datasets[0].data = hyperdrive_rating.map(Number).map(value => isNaN(value) ? 0 : value);
+      chart1.update();
+   })
+};
+
+atualizaGraficos()
