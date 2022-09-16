@@ -126,38 +126,53 @@ async function fetchData() {
 }
 
 // Aciona o acesso a API e armazena o JSON
-var fetchedData = fetchData()
+var fetchedData = fetchData();
+//console.log(fetchedData);
+
+
+
+function filtra() {
+   return fetchedData.then(datapoints => {
+      const filteredData = datapoints.results.filter(results => results.name != "Death Star")
+      //console.log(filteredData);
+
+      return filteredData
+   })
+};
+
+var dadosFiltrados = filtra();
+console.log(dadosFiltrados);
 
 // Função coleta o JSON, trata os dados (entrega um array no formato correto(string ou numero)), atualiza os dados de cada gráfico e dá um refresh nele
 function atualizaGraficos() {
-   fetchedData.then(datapoints => {
-      const name = datapoints.results.map(
+   dadosFiltrados.then(datapoints => {
+      const name = datapoints.map(
          function (index) {
             return index.name;
          }
       )
-      //console.log(name);
+      console.log(name);
 
-      const hyperdrive_rating = datapoints.results.map(
+      const hyperdrive_rating = datapoints.map(
          function (index) {
             return index.hyperdrive_rating;
          }
       )
       //console.log(hyperdrive_rating.map(Number).map(value => isNaN(value) ? 0 : value));
 
-      const cost_in_credits = datapoints.results.map(
+      const cost_in_credits = datapoints.map(
          function (index) {
             return index.cost_in_credits;
          }
       )
 
-      const length = datapoints.results.map(
+      const length = datapoints.map(
          function (index) {
             return index.length;
          }
       )
 
-      const crew = datapoints.results.map(
+      const crew = datapoints.map(
          function (index) {
             return index.crew;
          }
