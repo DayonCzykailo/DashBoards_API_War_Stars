@@ -129,29 +129,46 @@ async function fetchData() {
 var fetchedData = fetchData();
 //console.log(fetchedData);
 
-
-
-function filtra() {
-   return fetchedData.then(datapoints => {
-      const filteredData = datapoints.results.filter(results => results.name != "Death Star")
-      //console.log(filteredData);
-
-      return filteredData
+function remove(nome, dados) {
+   return dados.then(datapoints => {
+      try {//na primeira filtragem tem o results mas depois não
+         //console.log("dentro do try");
+         const filteredData = datapoints.results.filter(results => results.name != nome)
+         //console.log(filteredData);
+         return filteredData
+      } catch {
+         //console.log("dentro do catch");
+         const filteredData = datapoints.filter(datapoints => datapoints.name != nome)
+         //console.log(filteredData);
+         return filteredData
+      }
    })
 };
 
+var nomesRemovidos = ["Death Star", "Rebel transport", "Executor"]
+
 var dadosFiltrados = filtra();
-console.log(dadosFiltrados);
+
+function filtra() {
+   var temp = fetchedData;
+   nomesRemovidos.forEach(function (nome) {
+      //console.log(nome);
+      //console.log(temp);
+      temp = remove(nome, temp)
+   })
+   return temp
+};
 
 // Função coleta o JSON, trata os dados (entrega um array no formato correto(string ou numero)), atualiza os dados de cada gráfico e dá um refresh nele
 function atualizaGraficos() {
+   console.log(dadosFiltrados)
    dadosFiltrados.then(datapoints => {
       const name = datapoints.map(
          function (index) {
             return index.name;
          }
       )
-      console.log(name);
+      //console.log(name);
 
       const hyperdrive_rating = datapoints.map(
          function (index) {
