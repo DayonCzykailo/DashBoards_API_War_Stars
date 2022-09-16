@@ -1,24 +1,64 @@
 // Preset de Dados para inicializar o grafico
-const data = {
+const color = ["#ff0000"];
+const alternativeColor = ["#ffdd00"];
+const subColor = ["#9B0000"];
+
+const data1 = {
    labels: ['item'],
    datasets: [{
+      type: 'bar',
       label: 'label',
-      backgroundColor: [
-         "#012A4A",
-         "#013A63",
-         "#01497C",
-         "#014F86",
-         "#2A6F97",
-         "#2C7DA0",
-         "#468FAF",
-         "#61A5C2",
-         "#89C2D9",
-         "#A9D6E5",
-      ],
+      backgroundColor: color,
       data: [0],
       tension: 0.5
    }]
 };
+const data2 = {
+   labels: ['item'],
+   datasets: [
+      {
+         type: 'line',
+         label: 'label',
+         backgroundColor: color,
+         borderColor: subColor,
+         data: [0],
+         tension: 0.5
+      },
+      {
+         type: 'bar',
+         label: 'label',
+         backgroundColor: alternativeColor,
+         borderColor: subColor,
+         data: [0],
+         tension: 0.5
+      }
+   ]
+};
+
+const data3 = {
+   labels: ['item'],
+   datasets: [{
+      type: 'line',
+      label: 'label',
+      backgroundColor: color,
+      borderColor: subColor,
+      data: [0],
+      tension: 0.5
+   }]
+};
+
+const data4 = {
+   labels: ['item'],
+   datasets: [{
+      type: 'line',
+      label: 'label',
+      backgroundColor: color,
+      borderColor: subColor,
+      data: [0],
+      tension: 0.5
+   }]
+};
+
 
 // Configurações de Animação
 const options = {
@@ -37,39 +77,41 @@ const options = {
    scales: {
       x: {
          stacked: true,
+         ticks: {
+            color: "#FFFFFF",
+         }
       },
       y: {
-         stacked: true
+         stacked: true,
+         ticks: {
+            color: "#FFFFFF",
+         }
       }
-   }
+   },
 };
 
 // Gráficos
 const grafico1 = document.getElementById('grafico1').getContext('2d');
 const chart1 = new Chart(grafico1, {
-   type: 'bar',
-   data,
+   data: data1,
    options
 });
 
 const grafico2 = document.getElementById('grafico2').getContext('2d');
 const chart2 = new Chart(grafico2, {
-   type: 'doughnut',
-   data,
+   data: data2,
    options
 });
 
 const grafico3 = document.getElementById('grafico3').getContext('2d');
 const chart3 = new Chart(grafico3, {
-   type: 'line',
-   data,
+   data: data3,
    options
 });
 
 const grafico4 = document.getElementById('grafico4').getContext('2d');
 const chart4 = new Chart(grafico4, {
-   type: 'line',
-   data,
+   data: data4,
    options
 });
 
@@ -129,7 +171,9 @@ function atualizaGraficos() {
 
       chart2.data.labels = name;
       chart2.data.datasets[0].data = cost_in_credits.map(Number).map(value => isNaN(value) ? 0 : value);
-      chart2.data.datasets[0].label = "";
+      chart2.data.datasets[1].data = cost_in_credits.map(Number).map(value => isNaN(value) ? 0 : value);
+      chart2.data.datasets[0].label = "Custo em Créditos";
+      chart2.data.datasets[1].label = "";
       chart2.update();
 
       chart3.data.labels = name;
@@ -139,7 +183,7 @@ function atualizaGraficos() {
 
       chart4.data.labels = name;
       chart4.data.datasets[0].data = crew.map(Number).map(value => isNaN(value) ? 0 : value);
-      chart4.data.datasets[0].label = "";
+      chart4.data.datasets[0].label = "Tripulação";
       chart4.update();
    })
 };

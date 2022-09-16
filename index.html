@@ -5,40 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script src="index.js"></script>
     <title>Dahsboard</title>
 </head>
 
 <body>
-    <div class="titleCenter">
-        <h1>Naves de Star Wars Dashboard</h1>
-    </div>
-    <div class="containerLine">
-        <div class="container">
-            <div class="graphContainer">
-                <canvas id="grafico1" class="graph"></canvas>
-            </div>
+    <nav class="">
+        <div class="navbar">
+            <img src="logo.png" alt="logo" class="logo">
+            <h1>Naves Dashboard</h1>
         </div>
-    </div>
+    </nav>
     <div class="containerLine">
-        <div class="container">
-            <div class="graphContainer">
-                <canvas id="grafico2" class="graph"></canvas>
-            </div>
+        <div class="containerMenu">
+            <h2>Naves</h2>
+            <p>texto</p>
         </div>
-    </div>
-    <div class="containerLine">
-        <div class="container">
-            <div class="graphContainer">
-                <canvas id="grafico3" class="graph"></canvas>
+        <div class="containerCentral">
+            <div class="containerLine">
+                <div class="container">
+                    <div class="graphContainer">
+                        <canvas width="30px" height="10px" id="grafico1" class=""></canvas>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="graphContainer">
+                        <canvas width="30px" height="10px" id="grafico2" class=""></canvas>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="containerLine">
-        <div class="container">
-            <div class="graphContainer">
-                <canvas id="grafico4" class="graph"></canvas>
+            <div class="containerLine">
+                <div class="container">
+                    <div class="graphContainer1">
+                        <canvas width="40px" height="15px" id="grafico4" class=""></canvas>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="textContainer">
+                        <p>texto</p>
+                    </div>
+                </div>
+            </div>
+            <div class="containerLine">
+                <div class="container">
+                    <div class="graphContainer2">
+                        <canvas width="30px" height="15px" id="grafico3" class=""></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
