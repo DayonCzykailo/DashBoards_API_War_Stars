@@ -129,6 +129,7 @@ async function fetchData() {
 var fetchedData = fetchData();
 //console.log(fetchedData);
 
+//Remove um item de um json
 function remove(nome, dados) {
    return dados.then(datapoints => {
       try {//na primeira filtragem tem o results mas depois não
@@ -149,6 +150,7 @@ var nomesRemovidos = ["Death Star", "Rebel transport", "Executor"]
 
 var dadosFiltrados = filtra();
 
+//Para cada nome da lista recebida ele vasculha o json e remove o item
 function filtra() {
    var temp = fetchedData;
    nomesRemovidos.forEach(function (nome) {
@@ -220,4 +222,35 @@ function atualizaGraficos() {
    })
 };
 
+//Cria checkbox
+//function carregaMenu() {
+//   var nomes = fetchedData.then(datapoints => {
+//      const todosOsNomes = datapoints.results.map(function (index) {
+//         return index.name;
+//      })
+//      return todosOsNomes
+//   })
+//   console.log(nomes)
+//   nomes.forEach(function (nome) {
+//      var checkbox = document.createElement('input');
+//      checkbox.type = 'checkbox';
+//      checkbox.id = nome;
+//      checkbox.name = 'interest';
+//      checkbox.value = nome;
+//
+//      var label = document.createElement(nome)
+//      label.htmlFor = nome;
+//      label.appendChild(document.createTextNode(nome));
+//
+//      var br = document.createElement('br');
+//
+//      var container = document.getElementById('container');
+//      container.appendChild(checkbox);
+//      container.appendChild(label);
+//      container.appendChild(br);
+//   })
+//
+//}
+//
+//carregaMenu()
 atualizaGraficos()
